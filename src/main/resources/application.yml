@@ -1,0 +1,29 @@
+# Veuiller crer un utilisateur commun <master> pour uniformiser le code
+# Requete de creartiond
+# CREATE USER 'master'@'%' IDENTIFIED BY 'master';
+# GRANT ALL PRIVILEGES ON *.* TO 'master'@'%';
+# FLUSH PRIVILEGES;
+# EXIT;
+spring:
+  application:
+    name: grpc
+
+  datasource:
+    url: jdbc:mariadb://localhost:3306/grpc_DB?createDatabaseIfNotExist=true&userSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: master
+    password: master
+    driver-class-name: org.mariadb.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
+server:
+  servlet:
+    context-path: /api
+  port: 8083
+
+grpc:
+  server:
+    port: 9090

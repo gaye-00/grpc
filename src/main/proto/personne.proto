@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.groupe.grpc.config";
+option java_outer_classname = "PersonneServiceProto";
+
+service PersonneService {
+  rpc Ajouter (PersonneRequest) returns (PersonneResponse);
+  rpc Lister (Empty) returns (PersonneListResponse);
+  rpc Rechercher (PersonneIdRequest) returns (PersonneResponse);
+  rpc Modifier (PersonneUpdateRequest) returns (PersonneResponse);
+  rpc Supprimer (PersonneIdRequest) returns (DeleteResponse);
+}
+
+message PersonneRequest {
+  string nom = 1;
+  string prenom = 2;
+  string dateDeNaissance = 3;
+  string adresse = 4;
+  string telephone = 5;
+}
+
+message PersonneResponse {
+  int32 id = 1;
+  string nom = 2;
+  string prenom = 3;
+  string dateDeNaissance = 4;
+  string adresse = 5;
+  string telephone = 6;
+}
+
+message PersonneIdRequest {
+  int32 id = 1;
+}
+
+message PersonneUpdateRequest {
+  int32 id = 1;
+  string nom = 2;
+  string prenom = 3;
+  string dateDeNaissance = 4;
+  string adresse = 5;
+  string telephone = 6;
+}
+
+message PersonneListResponse {
+  repeated PersonneResponse personnes = 1;
+}
+
+message DeleteResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message Empty {}
