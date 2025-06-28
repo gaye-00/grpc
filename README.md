@@ -44,8 +44,8 @@ protoc --version
 
 # Cloner le projet
 
-git clone https://github.com/votre-username/person-service-grpc.git
-cd person-service-grpc
+git clone https://github.com/gaye-00/grpc
+cd grpc
 
 ### Compiler le projet avec Maven
 
